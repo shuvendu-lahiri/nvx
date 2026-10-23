@@ -216,7 +216,7 @@ def render_markdown(data):
         "**[Interactive dashboard](index.html)** (open the downloaded file in a browser; no server or external dependencies).", "",
         f"Snapshot: {data['generated_at']}. Latest published report per PR supplies the counts; all report links are retained "
         "in [data.json](data.json). Workflow attempts without a published report are not counted as zero findings.", "",
-        f"**{total['selected_prs']} PRs selected; {total['attempted_prs']} audits started; {total['published_reports']} published reports; "
+        f"**{total['selected_prs']} PRs selected; audits started: {total['attempted_prs']}; {total['published_reports']} published reports; "
         f"{total['refuted_prs']} PRs with {total['outcomes']['refuted']} conditional refutations; "
         f"{total['outcomes']['verified']} model verifications; {total['without_report']} PRs without a published report.**", "",
         "## All selected PRs (refutations first)", "",
@@ -270,6 +270,8 @@ def render_markdown(data):
         "Refresh reads PR metadata, issue comments and reviewer workflow runs. It never checks out PR heads, "
         "executes PR code, launches audits or changes proof acceptance. Malformed report counts fail refresh explicitly. "
         "Code blocks are excluded when reading outcome labels; Markdown and HTML output treat PR content as data.", "",
+        "The campaign refreshes this snapshot approximately every ten minutes while audits are active, "
+        "with a final refresh when the queue finishes. Reload the live page to see a newer snapshot.", "",
         "The immutable [cohort manifest](cohort.json) retains all twenty selected replays, including drafts waiting "
         "for the pilot or a worker slot. Skipped-only workflow runs do not count as audit attempts. "
         "Unrelated PRs are excluded. The fork's dev branch and existing workflow enable/disable states are unchanged. "
