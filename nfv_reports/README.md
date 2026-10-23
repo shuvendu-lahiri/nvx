@@ -7,14 +7,15 @@ Published results from the prototype [Neuro-Formal Verification](https://arxiv.o
 
 **[Interactive dashboard](index.html)** (open the downloaded file in a browser; no server or external dependencies).
 
-Snapshot: 2026-10-23T02:24:57.865373+00:00. Latest published report per PR supplies the counts; all report links are retained in [data.json](data.json). Workflow attempts without a published report are not counted as zero findings.
+Snapshot: 2026-10-23T02:35:45.709441+00:00. Latest published report per PR supplies the counts; all report links are retained in [data.json](data.json). Workflow attempts without a published report are not counted as zero findings.
 
-**20 PRs selected; audits started: 1; 0 published reports; 0 PRs with 0 conditional refutations; 0 model verifications; 20 PRs without a published report.**
+**20 PRs selected; audits started: 4; 1 published reports; 1 PRs with 1 conditional refutations; 5 model verifications; 19 PRs without a published report.**
 
 ## All selected PRs (refutations first)
 
 | Source change | Replay PR | Change | Latest report | Properties | Refuted | Verified | Exhausted | Audit failure | Evidence |
 |---|---|---|---|---:|---:|---:|---:|---:|---|
+| [change 747](https://redirect.github.com/microsoft/nvx/pull/747) | [shuvendu-lahiri/nvx#1](https://github.com/shuvendu-lahiri/nvx/pull/1) | nvx\-rs: encode the NVXS roles' DATA and CREDIT with one function | **REFUTED (model)** | 7 | **1** | 5 | 0 | 1 | [Report](https://github.com/shuvendu-lahiri/nvx/pull/1#issuecomment-6356007501) / [run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39888393336) |
 | [change 657](https://redirect.github.com/microsoft/nvx/pull/657) | [shuvendu-lahiri/nvx#20](https://github.com/shuvendu-lahiri/nvx/pull/20) | adversarial: keep executor close bounded when a child holds stdout | No published report (not started) | - | - | - | - | - | [Awaiting audit](https://github.com/shuvendu-lahiri/nvx/pull/20) |
 | [change 658](https://redirect.github.com/microsoft/nvx/pull/658) | [shuvendu-lahiri/nvx#19](https://github.com/shuvendu-lahiri/nvx/pull/19) | performance: keep results measured before a history reset out of the series | No published report (not started) | - | - | - | - | - | [Awaiting audit](https://github.com/shuvendu-lahiri/nvx/pull/19) |
 | [change 664](https://redirect.github.com/microsoft/nvx/pull/664) | [shuvendu-lahiri/nvx#18](https://github.com/shuvendu-lahiri/nvx/pull/18) | release: name the mismatched fields in Ubuntu artifact manifest errors | No published report (not started) | - | - | - | - | - | [Awaiting audit](https://github.com/shuvendu-lahiri/nvx/pull/18) |
@@ -31,14 +32,19 @@ Snapshot: 2026-10-23T02:24:57.865373+00:00. Latest published report per PR suppl
 | [change 689](https://redirect.github.com/microsoft/nvx/pull/689) | [shuvendu-lahiri/nvx#7](https://github.com/shuvendu-lahiri/nvx/pull/7) | nvx\-rs: lay out execution\-helper configurations with one function | No published report (not started) | - | - | - | - | - | [Awaiting audit](https://github.com/shuvendu-lahiri/nvx/pull/7) |
 | [change 705](https://redirect.github.com/microsoft/nvx/pull/705) | [shuvendu-lahiri/nvx#6](https://github.com/shuvendu-lahiri/nvx/pull/6) | nvx\-rs: write the NVXS record header with one function | No published report (not started) | - | - | - | - | - | [Awaiting audit](https://github.com/shuvendu-lahiri/nvx/pull/6) |
 | [change 742](https://redirect.github.com/microsoft/nvx/pull/742) | [shuvendu-lahiri/nvx#5](https://github.com/shuvendu-lahiri/nvx/pull/5) | nvx\-rs: read the time checks' kernel files with one function | No published report (not started) | - | - | - | - | - | [Awaiting audit](https://github.com/shuvendu-lahiri/nvx/pull/5) |
-| [change 750](https://redirect.github.com/microsoft/nvx/pull/750) | [shuvendu-lahiri/nvx#4](https://github.com/shuvendu-lahiri/nvx/pull/4) | nvx\-rs: share the guest tests' /bin/sh \-c command helper | No published report (not started) | - | - | - | - | - | [Awaiting audit](https://github.com/shuvendu-lahiri/nvx/pull/4) |
-| [change 755](https://redirect.github.com/microsoft/nvx/pull/755) | [shuvendu-lahiri/nvx#3](https://github.com/shuvendu-lahiri/nvx/pull/3) | nvx\-rs: share the sandbox tests' policy and native helpers | No published report (not started) | - | - | - | - | - | [Awaiting audit](https://github.com/shuvendu-lahiri/nvx/pull/3) |
-| [change 758](https://redirect.github.com/microsoft/nvx/pull/758) | [shuvendu-lahiri/nvx#2](https://github.com/shuvendu-lahiri/nvx/pull/2) | nvx\-rs: build the guest programs' test command lines with one helper | No published report (not started) | - | - | - | - | - | [Awaiting audit](https://github.com/shuvendu-lahiri/nvx/pull/2) |
-| [change 747](https://redirect.github.com/microsoft/nvx/pull/747) | [shuvendu-lahiri/nvx#1](https://github.com/shuvendu-lahiri/nvx/pull/1) | nvx\-rs: encode the NVXS roles' DATA and CREDIT with one function | No published report (in\_progress) | - | - | - | - | - | [Run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39888393336) |
+| [change 750](https://redirect.github.com/microsoft/nvx/pull/750) | [shuvendu-lahiri/nvx#4](https://github.com/shuvendu-lahiri/nvx/pull/4) | nvx\-rs: share the guest tests' /bin/sh \-c command helper | No published report (queued) | - | - | - | - | - | [Run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39890421003) |
+| [change 755](https://redirect.github.com/microsoft/nvx/pull/755) | [shuvendu-lahiri/nvx#3](https://github.com/shuvendu-lahiri/nvx/pull/3) | nvx\-rs: share the sandbox tests' policy and native helpers | No published report (in\_progress) | - | - | - | - | - | [Run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39890415139) |
+| [change 758](https://redirect.github.com/microsoft/nvx/pull/758) | [shuvendu-lahiri/nvx#2](https://github.com/shuvendu-lahiri/nvx/pull/2) | nvx\-rs: build the guest programs' test command lines with one helper | No published report (in\_progress) | - | - | - | - | - | [Run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39890408953) |
 
 ## Conditional model refutations
 
 The following property texts are extracted from the published reports, without new adjudication or inference. The original report contains assumptions, source overlays and native evidence.
+
+### shuvendu-lahiri/nvx#1 / P7
+
+encode\_next is transactional on failure: if the entry sequence is u64::MAX, it returns SequenceOverflow for the requested record type before attempting record encoding; otherwise, if record encoding rejects the record, it propagates that error\. In either case, it leaves both the sequence and output unchanged\.
+
+[Original report](https://github.com/shuvendu-lahiri/nvx/pull/1#issuecomment-6356007501)
 
 ## Refresh and validate
 

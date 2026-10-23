@@ -1,20 +1,20 @@
 {
   "schema": 1,
   "repository": "shuvendu-lahiri/nvx",
-  "generated_at": "2026-10-23T02:24:57.865373+00:00",
+  "generated_at": "2026-10-23T02:35:45.709441+00:00",
   "summary": {
     "selected_prs": 20,
-    "attempted_prs": 1,
-    "waiting_prs": 19,
-    "published_reports": 0,
-    "without_report": 20,
-    "refuted_prs": 0,
-    "properties": 0,
+    "attempted_prs": 4,
+    "waiting_prs": 16,
+    "published_reports": 1,
+    "without_report": 19,
+    "refuted_prs": 1,
+    "properties": 7,
     "outcomes": {
-      "refuted": 0,
-      "verified": 0,
+      "refuted": 1,
+      "verified": 5,
       "resources exhausted": 0,
-      "type-check/audit failure": 0
+      "type-check/audit failure": 1
     }
   },
   "prs": [
@@ -26,15 +26,67 @@
       "state": "open",
       "head_sha": "487c340542147e201d9870ad8f499c4874e80c63",
       "head_branch": "nfv-pedro-747",
-      "latest_report": null,
-      "report_history": [],
-      "report_matches_current_head": null,
+      "latest_report": {
+        "comment_id": 6356007501,
+        "url": "https://github.com/shuvendu-lahiri/nvx/pull/1#issuecomment-6356007501",
+        "published_at": "2026-10-23T02:34:26Z",
+        "updated_at": "2026-10-23T02:34:26Z",
+        "body_sha256": "b459c0f58eeac91edaf511befb3d7628b34982a82294bda96edb79707edd96f3",
+        "source_sha_prefix": "487c34054214",
+        "base_sha_prefix": "519982e16ffd",
+        "run_id": 39888393336,
+        "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39888393336",
+        "counts": {
+          "refuted": 1,
+          "verified": 5,
+          "resources exhausted": 0,
+          "type-check/audit failure": 1
+        },
+        "properties": 7,
+        "refutations": [
+          {
+            "property_id": "P7",
+            "property": "encode_next is transactional on failure: if the entry sequence is u64::MAX, it returns SequenceOverflow for the requested record type before attempting record encoding; otherwise, if record encoding rejects the record, it propagates that error. In either case, it leaves both the sequence and output unchanged.",
+            "input": "`identity.epoch = 0`; `&identity.instance_id = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]`; `output = []`; `payload = []`; `record_type = 0`; `*sequence = 0`; abstract state: error returned by encode_record = `0`; whether encode_record accepts the record = `false`; output state after encode_record returns an error = `[1]`",
+            "sketch": "If `encode_record(` rejects after changing `output`, the error is propagated before `sequence` advances, but the changed output remains."
+          }
+        ]
+      },
+      "report_history": [
+        {
+          "comment_id": 6356007501,
+          "url": "https://github.com/shuvendu-lahiri/nvx/pull/1#issuecomment-6356007501",
+          "published_at": "2026-10-23T02:34:26Z",
+          "updated_at": "2026-10-23T02:34:26Z",
+          "body_sha256": "b459c0f58eeac91edaf511befb3d7628b34982a82294bda96edb79707edd96f3",
+          "source_sha_prefix": "487c34054214",
+          "base_sha_prefix": "519982e16ffd",
+          "run_id": 39888393336,
+          "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39888393336",
+          "counts": {
+            "refuted": 1,
+            "verified": 5,
+            "resources exhausted": 0,
+            "type-check/audit failure": 1
+          },
+          "properties": 7,
+          "refutations": [
+            {
+              "property_id": "P7",
+              "property": "encode_next is transactional on failure: if the entry sequence is u64::MAX, it returns SequenceOverflow for the requested record type before attempting record encoding; otherwise, if record encoding rejects the record, it propagates that error. In either case, it leaves both the sequence and output unchanged.",
+              "input": "`identity.epoch = 0`; `&identity.instance_id = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]`; `output = []`; `payload = []`; `record_type = 0`; `*sequence = 0`; abstract state: error returned by encode_record = `0`; whether encode_record accepts the record = `false`; output state after encode_record returns an error = `[1]`",
+              "sketch": "If `encode_record(` rejects after changing `output`, the error is propagated before `sequence` advances, but the changed output remains."
+            }
+          ]
+        }
+      ],
+      "report_matches_current_head": true,
       "attempts": 1,
       "latest_run": {
         "id": 39888393336,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39888393336",
-        "status": "in_progress",
-        "conclusion": null
+        "status": "completed",
+        "conclusion": "success"
       },
       "source_number": 747,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/747",
@@ -45,15 +97,20 @@
       "number": 2,
       "title": "nvx-rs: build the guest programs' test command lines with one helper",
       "url": "https://github.com/shuvendu-lahiri/nvx/pull/2",
-      "draft": true,
+      "draft": false,
       "state": "open",
       "head_sha": "6f0a3614664c2ce1156e8c74c3c156567fce5d51",
       "head_branch": "nfv-pedro-758",
       "latest_report": null,
       "report_history": [],
       "report_matches_current_head": null,
-      "attempts": 0,
-      "latest_run": null,
+      "attempts": 1,
+      "latest_run": {
+        "id": 39890408953,
+        "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39890408953",
+        "status": "in_progress",
+        "conclusion": null
+      },
       "source_number": 758,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/758",
       "source_head_sha": "52e385bb6a93d27ccce7524c4837d74e70b3710b",
@@ -63,15 +120,20 @@
       "number": 3,
       "title": "nvx-rs: share the sandbox tests' policy and native helpers",
       "url": "https://github.com/shuvendu-lahiri/nvx/pull/3",
-      "draft": true,
+      "draft": false,
       "state": "open",
       "head_sha": "09cbaae595e8cce752086618d45501d2e59a0ffd",
       "head_branch": "nfv-pedro-755",
       "latest_report": null,
       "report_history": [],
       "report_matches_current_head": null,
-      "attempts": 0,
-      "latest_run": null,
+      "attempts": 1,
+      "latest_run": {
+        "id": 39890415139,
+        "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39890415139",
+        "status": "in_progress",
+        "conclusion": null
+      },
       "source_number": 755,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/755",
       "source_head_sha": "37e2d27f9dff5d8ce4b97ab0606379a554e57cae",
@@ -81,15 +143,20 @@
       "number": 4,
       "title": "nvx-rs: share the guest tests' /bin/sh -c command helper",
       "url": "https://github.com/shuvendu-lahiri/nvx/pull/4",
-      "draft": true,
+      "draft": false,
       "state": "open",
       "head_sha": "256b3e4f698aff1d363561b092535092ca6b53bb",
       "head_branch": "nfv-pedro-750",
       "latest_report": null,
       "report_history": [],
       "report_matches_current_head": null,
-      "attempts": 0,
-      "latest_run": null,
+      "attempts": 1,
+      "latest_run": {
+        "id": 39890421003,
+        "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39890421003",
+        "status": "queued",
+        "conclusion": null
+      },
       "source_number": 750,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/750",
       "source_head_sha": "d68ab667e4d2c55e59d730ad6f119a8b31446cc1",
@@ -99,7 +166,7 @@
       "number": 5,
       "title": "nvx-rs: read the time checks' kernel files with one function",
       "url": "https://github.com/shuvendu-lahiri/nvx/pull/5",
-      "draft": true,
+      "draft": false,
       "state": "open",
       "head_sha": "1f88dd5b30b961cc6376bc39aaed32253e4e3e30",
       "head_branch": "nfv-pedro-742",
