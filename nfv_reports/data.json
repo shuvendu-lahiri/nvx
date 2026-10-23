@@ -1,20 +1,20 @@
 {
   "schema": 1,
   "repository": "shuvendu-lahiri/nvx",
-  "generated_at": "2026-10-23T03:49:15.195238+00:00",
+  "generated_at": "2026-10-23T04:00:06.497749+00:00",
   "summary": {
     "selected_prs": 20,
     "attempted_prs": 18,
     "waiting_prs": 2,
-    "published_reports": 10,
-    "without_report": 10,
-    "refuted_prs": 1,
-    "properties": 32,
+    "published_reports": 11,
+    "without_report": 9,
+    "refuted_prs": 2,
+    "properties": 41,
     "outcomes": {
-      "refuted": 1,
-      "verified": 21,
+      "refuted": 2,
+      "verified": 26,
       "resources exhausted": 0,
-      "type-check/audit failure": 10
+      "type-check/audit failure": 13
     }
   },
   "prs": [
@@ -597,9 +597,61 @@
       "state": "open",
       "head_sha": "dd02cd576fdd5cf813b0b64f7ac93cd1db417b86",
       "head_branch": "nfv-pedro-714",
-      "latest_report": null,
-      "report_history": [],
-      "report_matches_current_head": null,
+      "latest_report": {
+        "comment_id": 6356987972,
+        "url": "https://github.com/shuvendu-lahiri/nvx/pull/12#issuecomment-6356987972",
+        "published_at": "2026-10-23T03:55:20Z",
+        "updated_at": "2026-10-23T03:55:20Z",
+        "body_sha256": "0d54bae372c8704ef7fdc6a817ed5a1f17ac71d35b41f321f7bd6c6751cd1ac4",
+        "source_sha_prefix": "dd02cd576fdd",
+        "base_sha_prefix": "198754ffbf25",
+        "run_id": 39893502095,
+        "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39893502095",
+        "counts": {
+          "refuted": 1,
+          "verified": 5,
+          "resources exhausted": 0,
+          "type-check/audit failure": 3
+        },
+        "properties": 9,
+        "refutations": [
+          {
+            "property_id": "P4",
+            "property": "Hypothesis: once the fuzz query and package restoration succeed, the function runs the workspace nextest command before the workspace doctest command; if the nextest invocation raises, the doctest invocation is not reached.",
+            "input": "`path.is_file() = true`; `result.returncode = 0`; `os.name == \"nt\" = false`; abstract state: availability of the cargo executable = `true`; strict UTF-8 decoding outcome for fuzz output = `false`; doctest run_checked outcome = `false`; completion of the fuzz-crate capture command = `true`; decoded fuzz-package lines = `[]`; nextest run_checked outcome = `false`; package-restoration call outcome = `true`; static excluded-package sequence = `[]`",
+            "sketch": "If the file and tool checks return, the fuzz query has return code zero, package restoration returns, and fuzz_crates.stdout.decode(\"utf-8\").splitlines() raises, then neither the nextest call nor the doctest call is reached. Thus successful fuzz querying and package restoration alone do not ensure the claimed call ordering."
+          }
+        ]
+      },
+      "report_history": [
+        {
+          "comment_id": 6356987972,
+          "url": "https://github.com/shuvendu-lahiri/nvx/pull/12#issuecomment-6356987972",
+          "published_at": "2026-10-23T03:55:20Z",
+          "updated_at": "2026-10-23T03:55:20Z",
+          "body_sha256": "0d54bae372c8704ef7fdc6a817ed5a1f17ac71d35b41f321f7bd6c6751cd1ac4",
+          "source_sha_prefix": "dd02cd576fdd",
+          "base_sha_prefix": "198754ffbf25",
+          "run_id": 39893502095,
+          "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39893502095",
+          "counts": {
+            "refuted": 1,
+            "verified": 5,
+            "resources exhausted": 0,
+            "type-check/audit failure": 3
+          },
+          "properties": 9,
+          "refutations": [
+            {
+              "property_id": "P4",
+              "property": "Hypothesis: once the fuzz query and package restoration succeed, the function runs the workspace nextest command before the workspace doctest command; if the nextest invocation raises, the doctest invocation is not reached.",
+              "input": "`path.is_file() = true`; `result.returncode = 0`; `os.name == \"nt\" = false`; abstract state: availability of the cargo executable = `true`; strict UTF-8 decoding outcome for fuzz output = `false`; doctest run_checked outcome = `false`; completion of the fuzz-crate capture command = `true`; decoded fuzz-package lines = `[]`; nextest run_checked outcome = `false`; package-restoration call outcome = `true`; static excluded-package sequence = `[]`",
+              "sketch": "If the file and tool checks return, the fuzz query has return code zero, package restoration returns, and fuzz_crates.stdout.decode(\"utf-8\").splitlines() raises, then neither the nextest call nor the doctest call is reached. Thus successful fuzz querying and package restoration alone do not ensure the claimed call ordering."
+            }
+          ]
+        }
+      ],
+      "report_matches_current_head": true,
       "attempts": 1,
       "latest_run": {
         "id": 39893502095,
@@ -818,7 +870,7 @@
       "latest_run": {
         "id": 39896859074,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39896859074",
-        "status": "pending",
+        "status": "in_progress",
         "conclusion": null
       },
       "source_number": 664,
