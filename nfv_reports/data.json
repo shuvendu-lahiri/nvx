@@ -1,20 +1,20 @@
 {
   "schema": 1,
   "repository": "shuvendu-lahiri/nvx",
-  "generated_at": "2026-10-23T04:43:49.412027+00:00",
+  "generated_at": "2026-10-23T04:48:11.862924+00:00",
   "summary": {
     "selected_prs": 20,
     "attempted_prs": 20,
     "waiting_prs": 0,
-    "published_reports": 16,
-    "without_report": 4,
-    "refuted_prs": 5,
-    "properties": 80,
+    "published_reports": 17,
+    "without_report": 3,
+    "refuted_prs": 6,
+    "properties": 90,
     "outcomes": {
-      "refuted": 5,
-      "verified": 53,
-      "resources exhausted": 0,
-      "type-check/audit failure": 22
+      "refuted": 7,
+      "verified": 56,
+      "resources exhausted": 2,
+      "type-check/audit failure": 25
     }
   },
   "prs": [
@@ -672,9 +672,73 @@
       "state": "open",
       "head_sha": "b7ee8752a2147beb18ba4f21335d749a383b173e",
       "head_branch": "nfv-pedro-681",
-      "latest_report": null,
-      "report_history": [],
-      "report_matches_current_head": null,
+      "latest_report": {
+        "comment_id": 6357608805,
+        "url": "https://github.com/shuvendu-lahiri/nvx/pull/13#issuecomment-6357608805",
+        "published_at": "2026-10-23T04:46:51Z",
+        "updated_at": "2026-10-23T04:46:51Z",
+        "body_sha256": "e97520eceeae51ae7654e231e4c177bc7683b82b3205f4732c29331b1bfe5160",
+        "source_sha_prefix": "b7ee8752a214",
+        "base_sha_prefix": "ced1c6317da8",
+        "run_id": 39893507724,
+        "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39893507724",
+        "counts": {
+          "refuted": 2,
+          "verified": 3,
+          "resources exhausted": 2,
+          "type-check/audit failure": 3
+        },
+        "properties": 10,
+        "refutations": [
+          {
+            "property_id": "P7",
+            "property": "Hypothesis: for arguments that complete parsing successfully, the last successfully parsed --measure-ms occurrence determines measurement behavior: a value of zero suppresses the TSC-frequency measurement and its report line, while a positive value causes exactly one measurement using a duration of that many milliseconds and emits the corresponding tsc_hz_measured line.",
+            "input": "abstract state: initial measurement duration = `0`; per-option parsing and limit acceptance = `[true]`; TSC-rate measurement result = `0`; complete measured-line write outcome = `false`; recognized command-line option classification = `[0]`; per-element results of `*value = [1]`",
+            "sketch": "If the last successfully parsed --measure-ms value is positive, the measurement call would use that value as its duration. If the call beginning let _ = writeln!( does not successfully emit the complete line, the discarded write result permits no tsc_hz_measured line despite the claimed requirement."
+          },
+          {
+            "property_id": "P10",
+            "property": "For any stored command and last-read argument byte slices, calling `invalid` reports exactly their concatenation in the form `nvx-time-probe COMMAND: invalid option or value: ARGUMENT\\n` to the supplied error writer and returns `CommandError::Usage`; the usage result is returned even if writing the diagnostic fails.",
+            "input": "`self.command = [108, 97, 116, 101, 110, 99, 121]`; `self.last = [51]`; abstract state: initial error-writer contents = `[]`; outcome of writing the diagnostic = `false`; number of diagnostic bytes accepted before failure = `0`",
+            "sketch": "If stream.write_all(&parts.concat()) fails before accepting any bytes, its ignored result permits the complete diagnostic to be absent. The call to invalid can still return CommandError::Usage, so the property requiring the full diagnostic even after a write failure is conditionally refuted."
+          }
+        ]
+      },
+      "report_history": [
+        {
+          "comment_id": 6357608805,
+          "url": "https://github.com/shuvendu-lahiri/nvx/pull/13#issuecomment-6357608805",
+          "published_at": "2026-10-23T04:46:51Z",
+          "updated_at": "2026-10-23T04:46:51Z",
+          "body_sha256": "e97520eceeae51ae7654e231e4c177bc7683b82b3205f4732c29331b1bfe5160",
+          "source_sha_prefix": "b7ee8752a214",
+          "base_sha_prefix": "ced1c6317da8",
+          "run_id": 39893507724,
+          "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39893507724",
+          "counts": {
+            "refuted": 2,
+            "verified": 3,
+            "resources exhausted": 2,
+            "type-check/audit failure": 3
+          },
+          "properties": 10,
+          "refutations": [
+            {
+              "property_id": "P7",
+              "property": "Hypothesis: for arguments that complete parsing successfully, the last successfully parsed --measure-ms occurrence determines measurement behavior: a value of zero suppresses the TSC-frequency measurement and its report line, while a positive value causes exactly one measurement using a duration of that many milliseconds and emits the corresponding tsc_hz_measured line.",
+              "input": "abstract state: initial measurement duration = `0`; per-option parsing and limit acceptance = `[true]`; TSC-rate measurement result = `0`; complete measured-line write outcome = `false`; recognized command-line option classification = `[0]`; per-element results of `*value = [1]`",
+              "sketch": "If the last successfully parsed --measure-ms value is positive, the measurement call would use that value as its duration. If the call beginning let _ = writeln!( does not successfully emit the complete line, the discarded write result permits no tsc_hz_measured line despite the claimed requirement."
+            },
+            {
+              "property_id": "P10",
+              "property": "For any stored command and last-read argument byte slices, calling `invalid` reports exactly their concatenation in the form `nvx-time-probe COMMAND: invalid option or value: ARGUMENT\\n` to the supplied error writer and returns `CommandError::Usage`; the usage result is returned even if writing the diagnostic fails.",
+              "input": "`self.command = [108, 97, 116, 101, 110, 99, 121]`; `self.last = [51]`; abstract state: initial error-writer contents = `[]`; outcome of writing the diagnostic = `false`; number of diagnostic bytes accepted before failure = `0`",
+              "sketch": "If stream.write_all(&parts.concat()) fails before accepting any bytes, its ignored result permits the complete diagnostic to be absent. The call to invalid can still return CommandError::Usage, so the property requiring the full diagnostic even after a write failure is conditionally refuted."
+            }
+          ]
+        }
+      ],
+      "report_matches_current_head": true,
       "attempts": 1,
       "latest_run": {
         "id": 39893507724,
