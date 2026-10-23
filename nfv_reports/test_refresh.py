@@ -55,6 +55,11 @@ class RefreshTests(unittest.TestCase):
             with self.subTest(attempt=attempt), self.assertRaisesRegex(ValueError, "invalid workflow attempt"):
                 refresh.build([pr()], [], [{**run(), "run_attempt": attempt}], "snapshot")
 
+    def test_public_docs_keep_implementation_provenance_generic(self):
+        body = refresh.render_markdown(refresh.build([pr()], [comment()], [run()], "snapshot"))
+        self.assertNotIn("neuro-formal-verification/commit/", body)
+        self.assertNotIn("neuro-formal-verification/pull/", body)
+
     def test_report_without_legacy_marker(self):
         report = refresh.parse_report(comment())
         self.assertEqual(report["counts"]["refuted"], 1)

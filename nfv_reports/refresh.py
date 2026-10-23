@@ -267,12 +267,9 @@ def render_markdown(data):
                           markdown(finding["property"]), "", f"[Original report]({report['url']})", ""])
     lines.extend([
         "## Refresh and validate", "",
-        "Reviewer provenance: the [non-staged release]"
-        "(https://github.com/microsoft/neuro-formal-verification/commit/8c48598a3bd0ddf1c94b649eb1e52d9be171efb0) "
-        "is used for nineteen reports. Replay PR 6 uses the [parser-only Rust array-signature fix]"
-        "(https://github.com/microsoft/neuro-formal-verification/commit/af2e9f01124f62b593289bf14c206e2e3cb3260f) "
-        "([review](https://github.com/microsoft/neuro-formal-verification/pull/24)). "
-        "Proof/acceptance gates and repair budgets are unchanged. Workflow attempts include reruns; "
+        "All reports use the non-staged reviewer. Replay PR 6 includes a parser-only capture fix "
+        "for Rust array signatures; proof/acceptance gates and repair budgets are unchanged. "
+        "Workflow attempts include reruns; "
         "the PR count and property outcomes are not counted twice.", "",
         "Requires Python 3.10+ and authenticated GitHub CLI read access. From the repository root:", "",
         "```text", "python nfv_reports/refresh.py",
