@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "repository": "shuvendu-lahiri/nvx",
-  "generated_at": "2026-10-23T03:18:01.514602+00:00",
+  "generated_at": "2026-10-23T03:28:14.499905+00:00",
   "summary": {
     "selected_prs": 20,
     "attempted_prs": 14,
@@ -612,7 +612,7 @@
       "latest_run": {
         "id": 39893712214,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39893712214",
-        "status": "pending",
+        "status": "in_progress",
         "conclusion": null
       },
       "source_number": 680,
