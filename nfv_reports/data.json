@@ -1,20 +1,20 @@
 {
   "schema": 1,
   "repository": "shuvendu-lahiri/nvx",
-  "generated_at": "2026-10-23T03:28:14.499905+00:00",
+  "generated_at": "2026-10-23T03:38:34.621174+00:00",
   "summary": {
     "selected_prs": 20,
-    "attempted_prs": 14,
-    "waiting_prs": 6,
-    "published_reports": 7,
-    "without_report": 13,
+    "attempted_prs": 15,
+    "waiting_prs": 5,
+    "published_reports": 8,
+    "without_report": 12,
     "refuted_prs": 1,
-    "properties": 17,
+    "properties": 24,
     "outcomes": {
       "refuted": 1,
-      "verified": 11,
+      "verified": 15,
       "resources exhausted": 0,
-      "type-check/audit failure": 5
+      "type-check/audit failure": 8
     }
   },
   "prs": [
@@ -536,15 +536,53 @@
       "state": "open",
       "head_sha": "389e4d6788082efa9c96a1838bac2196c3a3255c",
       "head_branch": "nfv-pedro-682",
-      "latest_report": null,
-      "report_history": [],
-      "report_matches_current_head": null,
+      "latest_report": {
+        "comment_id": 6356740440,
+        "url": "https://github.com/shuvendu-lahiri/nvx/pull/11#issuecomment-6356740440",
+        "published_at": "2026-10-23T03:34:18Z",
+        "updated_at": "2026-10-23T03:34:18Z",
+        "body_sha256": "aee966c5b90078191b25ea319440d3d84eb7f1e0dfa44e296ab5885e54b1613a",
+        "source_sha_prefix": "389e4d678808",
+        "base_sha_prefix": "b0cab5f25918",
+        "run_id": 39893495398,
+        "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39893495398",
+        "counts": {
+          "refuted": 0,
+          "verified": 4,
+          "resources exhausted": 0,
+          "type-check/audit failure": 3
+        },
+        "properties": 7,
+        "refutations": []
+      },
+      "report_history": [
+        {
+          "comment_id": 6356740440,
+          "url": "https://github.com/shuvendu-lahiri/nvx/pull/11#issuecomment-6356740440",
+          "published_at": "2026-10-23T03:34:18Z",
+          "updated_at": "2026-10-23T03:34:18Z",
+          "body_sha256": "aee966c5b90078191b25ea319440d3d84eb7f1e0dfa44e296ab5885e54b1613a",
+          "source_sha_prefix": "389e4d678808",
+          "base_sha_prefix": "b0cab5f25918",
+          "run_id": 39893495398,
+          "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39893495398",
+          "counts": {
+            "refuted": 0,
+            "verified": 4,
+            "resources exhausted": 0,
+            "type-check/audit failure": 3
+          },
+          "properties": 7,
+          "refutations": []
+        }
+      ],
+      "report_matches_current_head": true,
       "attempts": 1,
       "latest_run": {
         "id": 39893495398,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39893495398",
-        "status": "in_progress",
-        "conclusion": null
+        "status": "completed",
+        "conclusion": "success"
       },
       "source_number": 682,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/682",
@@ -624,15 +662,20 @@
       "number": 15,
       "title": "nvx-rs: run the guest programs' main through one shared function",
       "url": "https://github.com/shuvendu-lahiri/nvx/pull/15",
-      "draft": true,
+      "draft": false,
       "state": "open",
       "head_sha": "660b8c627e9df5a7ab7d5abc97e393947806c07e",
       "head_branch": "nfv-pedro-679",
       "latest_report": null,
       "report_history": [],
       "report_matches_current_head": null,
-      "attempts": 0,
-      "latest_run": null,
+      "attempts": 1,
+      "latest_run": {
+        "id": 39895920868,
+        "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39895920868",
+        "status": "in_progress",
+        "conclusion": null
+      },
       "source_number": 679,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/679",
       "source_head_sha": "56ab021afe1c15ec7effd07b00c7bbcc0e0efd29",
