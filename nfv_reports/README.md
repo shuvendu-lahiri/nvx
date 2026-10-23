@@ -7,14 +7,15 @@ Published results from the prototype [Neuro-Formal Verification](https://arxiv.o
 
 **[Interactive dashboard](index.html)** (open the downloaded file in a browser; no server or external dependencies).
 
-Snapshot: 2026-10-23T04:37:32.780125+00:00. Latest published report per PR supplies the counts; all report links are retained in [data.json](data.json). Workflow attempts without a published report are not counted as zero findings.
+Snapshot: 2026-10-23T04:43:49.412027+00:00. Latest published report per PR supplies the counts; all report links are retained in [data.json](data.json). Workflow attempts without a published report are not counted as zero findings.
 
-**20 PRs selected; audits started: 20; 15 published reports; 4 PRs with 4 conditional refutations; 45 model verifications; 5 PRs without a published report.**
+**20 PRs selected; audits started: 20; 16 published reports; 5 PRs with 5 conditional refutations; 53 model verifications; 4 PRs without a published report.**
 
 ## All selected PRs (refutations first)
 
 | Source change | Replay PR | Change | Latest report | Properties | Refuted | Verified | Exhausted | Audit failure | Evidence |
 |---|---|---|---|---:|---:|---:|---:|---:|---|
+| [change 657](https://redirect.github.com/microsoft/nvx/pull/657) | [shuvendu-lahiri/nvx#20](https://github.com/shuvendu-lahiri/nvx/pull/20) | adversarial: keep executor close bounded when a child holds stdout | **REFUTED (model)** | 10 | **1** | 8 | 0 | 1 | [Report](https://github.com/shuvendu-lahiri/nvx/pull/20#issuecomment-6357548128) / [run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39898919181) |
 | [change 659](https://redirect.github.com/microsoft/nvx/pull/659) | [shuvendu-lahiri/nvx#16](https://github.com/shuvendu-lahiri/nvx/pull/16) | microvm tests: stream OpenVMM transcripts to disk as they are read | **REFUTED (model)** | 9 | **1** | 4 | 0 | 4 | [Report](https://github.com/shuvendu-lahiri/nvx/pull/16#issuecomment-6357198686) / [run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39896467670) |
 | [change 678](https://redirect.github.com/microsoft/nvx/pull/678) | [shuvendu-lahiri/nvx#17](https://github.com/shuvendu-lahiri/nvx/pull/17) | nvx\-rs: build the NVXS unit tests' epoch identities with one function | **REFUTED (model)** | 6 | **1** | 5 | 0 | 0 | [Report](https://github.com/shuvendu-lahiri/nvx/pull/17#issuecomment-6357154101) / [run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39896853340) |
 | [change 714](https://redirect.github.com/microsoft/nvx/pull/714) | [shuvendu-lahiri/nvx#12](https://github.com/shuvendu-lahiri/nvx/pull/12) | ci: link the Windows OpenVMM test builds with /Brepro for sccache | **REFUTED (model)** / latest attempt: failure | 9 | **1** | 5 | 0 | 3 | [Report](https://github.com/shuvendu-lahiri/nvx/pull/12#issuecomment-6356987972) / [run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39893502095) / [latest attempt](https://github.com/shuvendu-lahiri/nvx/actions/runs/39893502095) |
@@ -30,7 +31,6 @@ Snapshot: 2026-10-23T04:37:32.780125+00:00. Latest published report per PR suppl
 | [change 758](https://redirect.github.com/microsoft/nvx/pull/758) | [shuvendu-lahiri/nvx#2](https://github.com/shuvendu-lahiri/nvx/pull/2) | nvx\-rs: build the guest programs' test command lines with one helper | Published | 2 | 0 | 1 | 0 | 1 | [Report](https://github.com/shuvendu-lahiri/nvx/pull/2#issuecomment-6356305731) / [run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39890408953) |
 | [change 750](https://redirect.github.com/microsoft/nvx/pull/750) | [shuvendu-lahiri/nvx#4](https://github.com/shuvendu-lahiri/nvx/pull/4) | nvx\-rs: share the guest tests' /bin/sh \-c command helper | Published | 1 | 0 | 1 | 0 | 0 | [Report](https://github.com/shuvendu-lahiri/nvx/pull/4#issuecomment-6356182887) / [run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39890421003) |
 | [change 755](https://redirect.github.com/microsoft/nvx/pull/755) | [shuvendu-lahiri/nvx#3](https://github.com/shuvendu-lahiri/nvx/pull/3) | nvx\-rs: share the sandbox tests' policy and native helpers | Published | 1 | 0 | 1 | 0 | 0 | [Report](https://github.com/shuvendu-lahiri/nvx/pull/3#issuecomment-6356163011) / [run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39890415139) |
-| [change 657](https://redirect.github.com/microsoft/nvx/pull/657) | [shuvendu-lahiri/nvx#20](https://github.com/shuvendu-lahiri/nvx/pull/20) | adversarial: keep executor close bounded when a child holds stdout | No published report (in\_progress) | - | - | - | - | - | [Run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39898919181) |
 | [change 681](https://redirect.github.com/microsoft/nvx/pull/681) | [shuvendu-lahiri/nvx#13](https://github.com/shuvendu-lahiri/nvx/pull/13) | nvx\-rs: report the time probe's invalid options with one method | No published report (failure) | - | - | - | - | - | [Run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39893507724) |
 | [change 683](https://redirect.github.com/microsoft/nvx/pull/683) | [shuvendu-lahiri/nvx#10](https://github.com/shuvendu-lahiri/nvx/pull/10) | nvx\-rs: check the golden tests' fixture sections with one function | No published report (failure) | - | - | - | - | - | [Run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39892893751) |
 | [change 684](https://redirect.github.com/microsoft/nvx/pull/684) | [shuvendu-lahiri/nvx#9](https://github.com/shuvendu-lahiri/nvx/pull/9) | nvx\-rs: send the guest's attachment, ACK, and CREDIT with one method | No published report (failure) | - | - | - | - | - | [Run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39892693600) |
@@ -39,6 +39,12 @@ Snapshot: 2026-10-23T04:37:32.780125+00:00. Latest published report per PR suppl
 ## Conditional model refutations
 
 The following property texts are extracted from the published reports, without new adjudication or inference. The original report contains assumptions, source overlays and native evidence.
+
+### shuvendu-lahiri/nvx#20 / P7
+
+If process creation raises OSError, the constructor closes the already\-opened stderr log and propagates that error; if process creation succeeds but either protocol pipe is absent, it terminates the process, closes the stderr log, and raises ScriptError rather than returning a partially initialized client\.
+
+[Original report](https://github.com/shuvendu-lahiri/nvx/pull/20#issuecomment-6357548128)
 
 ### shuvendu-lahiri/nvx#16 / P8
 

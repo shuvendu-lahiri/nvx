@@ -1,20 +1,20 @@
 {
   "schema": 1,
   "repository": "shuvendu-lahiri/nvx",
-  "generated_at": "2026-10-23T04:37:32.780125+00:00",
+  "generated_at": "2026-10-23T04:43:49.412027+00:00",
   "summary": {
     "selected_prs": 20,
     "attempted_prs": 20,
     "waiting_prs": 0,
-    "published_reports": 15,
-    "without_report": 5,
-    "refuted_prs": 4,
-    "properties": 70,
+    "published_reports": 16,
+    "without_report": 4,
+    "refuted_prs": 5,
+    "properties": 80,
     "outcomes": {
-      "refuted": 4,
-      "verified": 45,
+      "refuted": 5,
+      "verified": 53,
       "resources exhausted": 0,
-      "type-check/audit failure": 21
+      "type-check/audit failure": 22
     }
   },
   "prs": [
@@ -1089,15 +1089,67 @@
       "state": "open",
       "head_sha": "5e46844aaa747e7630be141dd1c478cfbb5a9d4b",
       "head_branch": "nfv-pedro-657",
-      "latest_report": null,
-      "report_history": [],
-      "report_matches_current_head": null,
+      "latest_report": {
+        "comment_id": 6357548128,
+        "url": "https://github.com/shuvendu-lahiri/nvx/pull/20#issuecomment-6357548128",
+        "published_at": "2026-10-23T04:41:46Z",
+        "updated_at": "2026-10-23T04:41:46Z",
+        "body_sha256": "ed4c00d557164407a1a1ed5b9d16207fee3ee8f1dca07f6589e09dc644915c3b",
+        "source_sha_prefix": "5e46844aaa74",
+        "base_sha_prefix": "6e21fec614b0",
+        "run_id": 39898919181,
+        "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39898919181",
+        "counts": {
+          "refuted": 1,
+          "verified": 8,
+          "resources exhausted": 0,
+          "type-check/audit failure": 1
+        },
+        "properties": 10,
+        "refutations": [
+          {
+            "property_id": "P7",
+            "property": "If process creation raises OSError, the constructor closes the already-opened stderr log and propagates that error; if process creation succeeds but either protocol pipe is absent, it terminates the process, closes the stderr log, and raises ScriptError rather than returning a partially initialized client.",
+            "input": "`candidate.is_file() = false`; `command is None = true`; abstract state: closing stderr after detecting a missing pipe raises = `false`; closing the stderr log in the OSError handler raises = `true`; log-directory setup completes normally = `true`; queue and reader-thread initialization completes normally = `false`; local executor environment construction completes normally = `true`; process creation raises OSError = `true`; process creation raises a non-OSError exception = `false`; candidate path resolution completes normally = `false`; sanitized environment construction completes normally = `false`; opening stderr.log completes normally = `true`; the created process has a stdin protocol pipe = `false`; the created process has a stdout protocol pipe = `false`; terminating a process raises = `false`; command lookup finds an executable = `false`",
+            "sketch": "If subprocess.Popen raises OSError and self._stderr_stream.close() also raises, the handler exits at the close call before reaching the bare raise."
+          }
+        ]
+      },
+      "report_history": [
+        {
+          "comment_id": 6357548128,
+          "url": "https://github.com/shuvendu-lahiri/nvx/pull/20#issuecomment-6357548128",
+          "published_at": "2026-10-23T04:41:46Z",
+          "updated_at": "2026-10-23T04:41:46Z",
+          "body_sha256": "ed4c00d557164407a1a1ed5b9d16207fee3ee8f1dca07f6589e09dc644915c3b",
+          "source_sha_prefix": "5e46844aaa74",
+          "base_sha_prefix": "6e21fec614b0",
+          "run_id": 39898919181,
+          "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39898919181",
+          "counts": {
+            "refuted": 1,
+            "verified": 8,
+            "resources exhausted": 0,
+            "type-check/audit failure": 1
+          },
+          "properties": 10,
+          "refutations": [
+            {
+              "property_id": "P7",
+              "property": "If process creation raises OSError, the constructor closes the already-opened stderr log and propagates that error; if process creation succeeds but either protocol pipe is absent, it terminates the process, closes the stderr log, and raises ScriptError rather than returning a partially initialized client.",
+              "input": "`candidate.is_file() = false`; `command is None = true`; abstract state: closing stderr after detecting a missing pipe raises = `false`; closing the stderr log in the OSError handler raises = `true`; log-directory setup completes normally = `true`; queue and reader-thread initialization completes normally = `false`; local executor environment construction completes normally = `true`; process creation raises OSError = `true`; process creation raises a non-OSError exception = `false`; candidate path resolution completes normally = `false`; sanitized environment construction completes normally = `false`; opening stderr.log completes normally = `true`; the created process has a stdin protocol pipe = `false`; the created process has a stdout protocol pipe = `false`; terminating a process raises = `false`; command lookup finds an executable = `false`",
+              "sketch": "If subprocess.Popen raises OSError and self._stderr_stream.close() also raises, the handler exits at the close call before reaching the bare raise."
+            }
+          ]
+        }
+      ],
+      "report_matches_current_head": true,
       "attempts": 1,
       "latest_run": {
         "id": 39898919181,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39898919181",
-        "status": "in_progress",
-        "conclusion": null
+        "status": "completed",
+        "conclusion": "success"
       },
       "source_number": 657,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/657",
