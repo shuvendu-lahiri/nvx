@@ -1,20 +1,20 @@
 {
   "schema": 1,
   "repository": "shuvendu-lahiri/nvx",
-  "generated_at": "2026-10-23T04:10:43.644412+00:00",
+  "generated_at": "2026-10-23T04:21:08.093200+00:00",
   "summary": {
     "selected_prs": 20,
     "attempted_prs": 20,
     "waiting_prs": 0,
-    "published_reports": 12,
-    "without_report": 8,
-    "refuted_prs": 3,
-    "properties": 47,
+    "published_reports": 14,
+    "without_report": 6,
+    "refuted_prs": 4,
+    "properties": 60,
     "outcomes": {
-      "refuted": 3,
-      "verified": 31,
+      "refuted": 4,
+      "verified": 38,
       "resources exhausted": 0,
-      "type-check/audit failure": 13
+      "type-check/audit failure": 18
     }
   },
   "prs": [
@@ -817,15 +817,67 @@
       "state": "open",
       "head_sha": "1576d97c5c0c7b73a7fee98e6bfe19e6317adeed",
       "head_branch": "nfv-pedro-659",
-      "latest_report": null,
-      "report_history": [],
-      "report_matches_current_head": null,
+      "latest_report": {
+        "comment_id": 6357198686,
+        "url": "https://github.com/shuvendu-lahiri/nvx/pull/16#issuecomment-6357198686",
+        "published_at": "2026-10-23T04:12:55Z",
+        "updated_at": "2026-10-23T04:12:55Z",
+        "body_sha256": "c5707e93b22bad2416bf394c014a95bdc5f2151eb2d42e6e469711720bc0d8ac",
+        "source_sha_prefix": "1576d97c5c0c",
+        "base_sha_prefix": "7a32915eac21",
+        "run_id": 39896467670,
+        "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39896467670",
+        "counts": {
+          "refuted": 1,
+          "verified": 4,
+          "resources exhausted": 0,
+          "type-check/audit failure": 4
+        },
+        "properties": 9,
+        "refutations": [
+          {
+            "property_id": "P8",
+            "property": "When close is called, it attempts to stop the interaction before draining queued output; if interaction shutdown raises, it still attempts the drain when the transcript is open; and regardless of shutdown or drain failure, it attempts to close the transcript. If final transcript closure returns normally, the process is marked finished.",
+            "input": "`self._finished = false`; `not self._log.closed = true`; `self.process.poll() is None = true`; abstract state: queued output items available to _drain_available = `[]`; whether the transcript close operation raises = `false`; whether self._interaction.close() raises = `false`; whether terminate(self.process) raises = `true`; per-chunk transcript write and flush outcomes = `[]`",
+            "sketch": "If terminate(self.process) raises before the surrounding try block is entered, interaction shutdown, draining, and final transcript closure are skipped."
+          }
+        ]
+      },
+      "report_history": [
+        {
+          "comment_id": 6357198686,
+          "url": "https://github.com/shuvendu-lahiri/nvx/pull/16#issuecomment-6357198686",
+          "published_at": "2026-10-23T04:12:55Z",
+          "updated_at": "2026-10-23T04:12:55Z",
+          "body_sha256": "c5707e93b22bad2416bf394c014a95bdc5f2151eb2d42e6e469711720bc0d8ac",
+          "source_sha_prefix": "1576d97c5c0c",
+          "base_sha_prefix": "7a32915eac21",
+          "run_id": 39896467670,
+          "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39896467670",
+          "counts": {
+            "refuted": 1,
+            "verified": 4,
+            "resources exhausted": 0,
+            "type-check/audit failure": 4
+          },
+          "properties": 9,
+          "refutations": [
+            {
+              "property_id": "P8",
+              "property": "When close is called, it attempts to stop the interaction before draining queued output; if interaction shutdown raises, it still attempts the drain when the transcript is open; and regardless of shutdown or drain failure, it attempts to close the transcript. If final transcript closure returns normally, the process is marked finished.",
+              "input": "`self._finished = false`; `not self._log.closed = true`; `self.process.poll() is None = true`; abstract state: queued output items available to _drain_available = `[]`; whether the transcript close operation raises = `false`; whether self._interaction.close() raises = `false`; whether terminate(self.process) raises = `true`; per-chunk transcript write and flush outcomes = `[]`",
+              "sketch": "If terminate(self.process) raises before the surrounding try block is entered, interaction shutdown, draining, and final transcript closure are skipped."
+            }
+          ]
+        }
+      ],
+      "report_matches_current_head": true,
       "attempts": 1,
       "latest_run": {
         "id": 39896467670,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39896467670",
-        "status": "in_progress",
-        "conclusion": null
+        "status": "completed",
+        "conclusion": "success"
       },
       "source_number": 659,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/659",
@@ -915,15 +967,53 @@
       "state": "open",
       "head_sha": "580bf5db9da57f8096c924ce8aa2bb49f9036b9f",
       "head_branch": "nfv-pedro-664",
-      "latest_report": null,
-      "report_history": [],
-      "report_matches_current_head": null,
+      "latest_report": {
+        "comment_id": 6357212057,
+        "url": "https://github.com/shuvendu-lahiri/nvx/pull/18#issuecomment-6357212057",
+        "published_at": "2026-10-23T04:13:58Z",
+        "updated_at": "2026-10-23T04:13:58Z",
+        "body_sha256": "8abedb3236028dd6d506f8c049ca6a2c8b1586d87d5c08fb613a5006aec4f49b",
+        "source_sha_prefix": "580bf5db9da5",
+        "base_sha_prefix": "63dd7d4f3c39",
+        "run_id": 39896859074,
+        "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39896859074",
+        "counts": {
+          "refuted": 0,
+          "verified": 3,
+          "resources exhausted": 0,
+          "type-check/audit failure": 1
+        },
+        "properties": 4,
+        "refutations": []
+      },
+      "report_history": [
+        {
+          "comment_id": 6357212057,
+          "url": "https://github.com/shuvendu-lahiri/nvx/pull/18#issuecomment-6357212057",
+          "published_at": "2026-10-23T04:13:58Z",
+          "updated_at": "2026-10-23T04:13:58Z",
+          "body_sha256": "8abedb3236028dd6d506f8c049ca6a2c8b1586d87d5c08fb613a5006aec4f49b",
+          "source_sha_prefix": "580bf5db9da5",
+          "base_sha_prefix": "63dd7d4f3c39",
+          "run_id": 39896859074,
+          "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39896859074",
+          "counts": {
+            "refuted": 0,
+            "verified": 3,
+            "resources exhausted": 0,
+            "type-check/audit failure": 1
+          },
+          "properties": 4,
+          "refutations": []
+        }
+      ],
+      "report_matches_current_head": true,
       "attempts": 1,
       "latest_run": {
         "id": 39896859074,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39896859074",
-        "status": "in_progress",
-        "conclusion": null
+        "status": "completed",
+        "conclusion": "success"
       },
       "source_number": 664,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/664",
@@ -968,7 +1058,7 @@
       "latest_run": {
         "id": 39898919181,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39898919181",
-        "status": "queued",
+        "status": "in_progress",
         "conclusion": null
       },
       "source_number": 657,
