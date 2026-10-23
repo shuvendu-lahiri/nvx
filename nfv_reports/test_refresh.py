@@ -36,11 +36,25 @@ def run(number=2, run_id=100, conclusion="success"):
     return {"id": run_id, "pull_requests": [{"number": number,
              "url": f"https://api.github.com/repos/shuvendu-lahiri/nvx/pulls/{number}"}],
             "head_branch": f"branch-{number}", "head_repository": {"full_name": refresh.REPOSITORY},
-            "created_at": "2026-10-20T00:00:00Z", "status": "completed", "conclusion": conclusion,
+            "created_at": "2026-10-20T00:00:00Z", "status": "completed", "conclusion": conclusion, "run_attempt": 1,
             "html_url": f"{refresh.WEB}/actions/runs/{run_id}"}
 
 
 class RefreshTests(unittest.TestCase):
+    def test_reruns_are_attempts_not_extra_prs_or_properties(self):
+        rerun = {**run(), "run_attempt": 2}
+        data = refresh.build([pr()], [comment()], [rerun], "snapshot")
+        self.assertEqual(1, data["summary"]["attempted_prs"])
+        self.assertEqual(2, data["summary"]["workflow_attempts"])
+        self.assertEqual(1, data["summary"]["properties"])
+        self.assertEqual(2, data["prs"][0]["attempts"])
+        self.assertEqual(2, data["prs"][0]["latest_run"]["attempt"])
+
+    def test_invalid_attempt_metadata_is_not_assumed_successful(self):
+        for attempt in (None, 0, -1, True, "2"):
+            with self.subTest(attempt=attempt), self.assertRaisesRegex(ValueError, "invalid workflow attempt"):
+                refresh.build([pr()], [], [{**run(), "run_attempt": attempt}], "snapshot")
+
     def test_report_without_legacy_marker(self):
         report = refresh.parse_report(comment())
         self.assertEqual(report["counts"]["refuted"], 1)

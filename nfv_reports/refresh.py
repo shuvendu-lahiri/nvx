@@ -130,6 +130,8 @@ def build(pulls, comments, runs, generated_at, cohort=None):
     for run in runs:
         if run.get("conclusion") == "skipped":
             continue
+        if type(run.get("run_attempt")) is not int or run["run_attempt"] < 1:
+            raise ValueError(f"Run {run['id']}: missing or invalid workflow attempt")
         for number in run_numbers(run, heads):
             if cohort is not None and number not in selected:
                 continue
@@ -161,9 +163,9 @@ def build(pulls, comments, runs, generated_at, cohort=None):
             "head_sha": pr["head"]["sha"], "head_branch": pr["head"]["ref"],
             "latest_report": latest, "report_history": history,
             "report_matches_current_head": pr["head"]["sha"].startswith(latest["source_sha_prefix"]) if latest else None,
-            "attempts": len(recent),
+            "attempts": sum(run["run_attempt"] for run in recent),
             "latest_run": {"id": last_run["id"], "url": f"{WEB}/actions/runs/{last_run['id']}", "status": last_run["status"],
-                           "conclusion": last_run["conclusion"]} if last_run else None,
+                           "conclusion": last_run["conclusion"], "attempt": last_run["run_attempt"]} if last_run else None,
         })
         if number in selected:
             original = selected[number]
@@ -183,6 +185,7 @@ def build(pulls, comments, runs, generated_at, cohort=None):
         "summary": {
             "selected_prs": len(entries),
             "attempted_prs": sum(bool(e["attempts"] or e["latest_report"]) for e in entries),
+            "workflow_attempts": sum(e["attempts"] for e in entries),
             "waiting_prs": sum(not e["attempts"] and not e["latest_report"] for e in entries),
             "published_reports": sum(bool(e["latest_report"]) for e in entries),
             "without_report": sum(e["latest_report"] is None for e in entries),
@@ -216,7 +219,8 @@ def render_markdown(data):
         "**[Interactive dashboard](index.html)** (open the downloaded file in a browser; no server or external dependencies).", "",
         f"Snapshot: {data['generated_at']}. Latest published report per PR supplies the counts; all report links are retained "
         "in [data.json](data.json). Workflow attempts without a published report are not counted as zero findings.", "",
-        f"**{total['selected_prs']} PRs selected; audits started: {total['attempted_prs']}; {total['published_reports']} published reports; "
+        f"**{total['selected_prs']} PRs selected; audits started: {total['attempted_prs']}; "
+        f"{total['workflow_attempts']} workflow attempts; {total['published_reports']} published reports; "
         f"{total['refuted_prs']} PRs with {total['outcomes']['refuted']} conditional refutations; "
         f"{total['outcomes']['verified']} model verifications; {total['without_report']} PRs without a published report.**", "",
         "## All selected PRs (refutations first)", "",
@@ -263,6 +267,13 @@ def render_markdown(data):
                           markdown(finding["property"]), "", f"[Original report]({report['url']})", ""])
     lines.extend([
         "## Refresh and validate", "",
+        "Reviewer provenance: the [non-staged release]"
+        "(https://github.com/microsoft/neuro-formal-verification/commit/8c48598a3bd0ddf1c94b649eb1e52d9be171efb0) "
+        "is used for nineteen reports. Replay PR 6 uses the [parser-only Rust array-signature fix]"
+        "(https://github.com/microsoft/neuro-formal-verification/commit/af2e9f01124f62b593289bf14c206e2e3cb3260f) "
+        "([review](https://github.com/microsoft/neuro-formal-verification/pull/24)). "
+        "Proof/acceptance gates and repair budgets are unchanged. Workflow attempts include reruns; "
+        "the PR count and property outcomes are not counted twice.", "",
         "Requires Python 3.10+ and authenticated GitHub CLI read access. From the repository root:", "",
         "```text", "python nfv_reports/refresh.py",
         "python -m unittest discover -s nfv_reports -p test_refresh.py",

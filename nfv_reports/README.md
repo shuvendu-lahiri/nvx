@@ -7,9 +7,9 @@ Published results from the prototype [Neuro-Formal Verification](https://arxiv.o
 
 **[Interactive dashboard](index.html)** (open the downloaded file in a browser; no server or external dependencies).
 
-Snapshot: 2026-10-23T05:10:36.499802+00:00. Latest published report per PR supplies the counts; all report links are retained in [data.json](data.json). Workflow attempts without a published report are not counted as zero findings.
+Snapshot: 2026-10-23T05:13:48.209473+00:00. Latest published report per PR supplies the counts; all report links are retained in [data.json](data.json). Workflow attempts without a published report are not counted as zero findings.
 
-**20 PRs selected; audits started: 20; 19 published reports; 6 PRs with 7 conditional refutations; 58 model verifications; 1 PRs without a published report.**
+**20 PRs selected; audits started: 20; 23 workflow attempts; 19 published reports; 6 PRs with 7 conditional refutations; 58 model verifications; 1 PRs without a published report.**
 
 ## All selected PRs (refutations first)
 
@@ -34,7 +34,7 @@ Snapshot: 2026-10-23T05:10:36.499802+00:00. Latest published report per PR suppl
 | [change 758](https://redirect.github.com/microsoft/nvx/pull/758) | [shuvendu-lahiri/nvx#2](https://github.com/shuvendu-lahiri/nvx/pull/2) | nvx\-rs: build the guest programs' test command lines with one helper | Published | 2 | 0 | 1 | 0 | 1 | [Report](https://github.com/shuvendu-lahiri/nvx/pull/2#issuecomment-6356305731) / [run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39890408953) |
 | [change 750](https://redirect.github.com/microsoft/nvx/pull/750) | [shuvendu-lahiri/nvx#4](https://github.com/shuvendu-lahiri/nvx/pull/4) | nvx\-rs: share the guest tests' /bin/sh \-c command helper | Published | 1 | 0 | 1 | 0 | 0 | [Report](https://github.com/shuvendu-lahiri/nvx/pull/4#issuecomment-6356182887) / [run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39890421003) |
 | [change 755](https://redirect.github.com/microsoft/nvx/pull/755) | [shuvendu-lahiri/nvx#3](https://github.com/shuvendu-lahiri/nvx/pull/3) | nvx\-rs: share the sandbox tests' policy and native helpers | Published | 1 | 0 | 1 | 0 | 0 | [Report](https://github.com/shuvendu-lahiri/nvx/pull/3#issuecomment-6356163011) / [run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39890415139) |
-| [change 705](https://redirect.github.com/microsoft/nvx/pull/705) | [shuvendu-lahiri/nvx#6](https://github.com/shuvendu-lahiri/nvx/pull/6) | nvx\-rs: write the NVXS record header with one function | No published report (failure) | - | - | - | - | - | [Run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39891550289) |
+| [change 705](https://redirect.github.com/microsoft/nvx/pull/705) | [shuvendu-lahiri/nvx#6](https://github.com/shuvendu-lahiri/nvx/pull/6) | nvx\-rs: write the NVXS record header with one function | No published report (in\_progress) | - | - | - | - | - | [Run](https://github.com/shuvendu-lahiri/nvx/actions/runs/39891550289) |
 
 ## Conditional model refutations
 
@@ -83,6 +83,8 @@ encode\_next is transactional on failure: if the entry sequence is u64::MAX, it 
 [Original report](https://github.com/shuvendu-lahiri/nvx/pull/1#issuecomment-6356007501)
 
 ## Refresh and validate
+
+Reviewer provenance: the [non-staged release](https://github.com/microsoft/neuro-formal-verification/commit/8c48598a3bd0ddf1c94b649eb1e52d9be171efb0) is used for nineteen reports. Replay PR 6 uses the [parser-only Rust array-signature fix](https://github.com/microsoft/neuro-formal-verification/commit/af2e9f01124f62b593289bf14c206e2e3cb3260f) ([review](https://github.com/microsoft/neuro-formal-verification/pull/24)). Proof/acceptance gates and repair budgets are unchanged. Workflow attempts include reruns; the PR count and property outcomes are not counted twice.
 
 Requires Python 3.10+ and authenticated GitHub CLI read access. From the repository root:
 

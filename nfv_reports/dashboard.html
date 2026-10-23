@@ -183,10 +183,11 @@ function render() {
         evidence.append(history);
       }
     } else if (entry.latest_run) evidence.append(link("Workflow", entry.latest_run.url));
+    if (entry.latest_run) evidence.append(text("div", `Workflow attempt ${entry.latest_run.attempt}`, "muted"));
     row.append(evidence);
     byId("rows").append(row);
   }
-  byId("meta").textContent = `Showing ${entries.length} of ${data.prs.length} selected PRs. ${data.summary.attempted_prs} audits started; ${data.summary.waiting_prs} waiting. Refutations are highlighted, not confirmed bugs.`;
+  byId("meta").textContent = `Showing ${entries.length} of ${data.prs.length} selected PRs. Audits started: ${data.summary.attempted_prs}; workflow attempts: ${data.summary.workflow_attempts}; waiting: ${data.summary.waiting_prs}. Refutations are highlighted, not confirmed bugs.`;
   byId("empty").hidden = entries.length !== 0;
 }
 for (const id of ["query", "filter", "order"]) byId(id).addEventListener("input", render);
