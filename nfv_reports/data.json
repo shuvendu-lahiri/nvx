@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "repository": "shuvendu-lahiri/nvx",
-  "generated_at": "2026-10-23T04:48:11.862924+00:00",
+  "generated_at": "2026-10-23T05:00:10.271093+00:00",
   "summary": {
     "selected_prs": 20,
     "attempted_prs": 20,
@@ -497,8 +497,8 @@
       "latest_run": {
         "id": 39892693600,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39892693600",
-        "status": "completed",
-        "conclusion": "failure"
+        "status": "in_progress",
+        "conclusion": null
       },
       "source_number": 684,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/684",
@@ -520,8 +520,8 @@
       "latest_run": {
         "id": 39892893751,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39892893751",
-        "status": "completed",
-        "conclusion": "failure"
+        "status": "in_progress",
+        "conclusion": null
       },
       "source_number": 683,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/683",
