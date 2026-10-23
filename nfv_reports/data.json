@@ -1,18 +1,18 @@
 {
   "schema": 1,
   "repository": "shuvendu-lahiri/nvx",
-  "generated_at": "2026-10-23T04:00:06.497749+00:00",
+  "generated_at": "2026-10-23T04:10:43.644412+00:00",
   "summary": {
     "selected_prs": 20,
-    "attempted_prs": 18,
-    "waiting_prs": 2,
-    "published_reports": 11,
-    "without_report": 9,
-    "refuted_prs": 2,
-    "properties": 41,
+    "attempted_prs": 20,
+    "waiting_prs": 0,
+    "published_reports": 12,
+    "without_report": 8,
+    "refuted_prs": 3,
+    "properties": 47,
     "outcomes": {
-      "refuted": 2,
-      "verified": 26,
+      "refuted": 3,
+      "verified": 31,
       "resources exhausted": 0,
       "type-check/audit failure": 13
     }
@@ -679,8 +679,8 @@
       "latest_run": {
         "id": 39893507724,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39893507724",
-        "status": "in_progress",
-        "conclusion": null
+        "status": "completed",
+        "conclusion": "failure"
       },
       "source_number": 681,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/681",
@@ -840,15 +840,67 @@
       "state": "open",
       "head_sha": "e83a8e2b93d7fc34595df63ade0f4ba9fc721eb8",
       "head_branch": "nfv-pedro-678",
-      "latest_report": null,
-      "report_history": [],
-      "report_matches_current_head": null,
+      "latest_report": {
+        "comment_id": 6357154101,
+        "url": "https://github.com/shuvendu-lahiri/nvx/pull/17#issuecomment-6357154101",
+        "published_at": "2026-10-23T04:09:20Z",
+        "updated_at": "2026-10-23T04:09:20Z",
+        "body_sha256": "254a8bf10365545c039a284fd28db1c32b180378f1096bc37f989ea910762596",
+        "source_sha_prefix": "e83a8e2b93d7",
+        "base_sha_prefix": "12e3b9521456",
+        "run_id": 39896853340,
+        "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39896853340",
+        "counts": {
+          "refuted": 1,
+          "verified": 5,
+          "resources exhausted": 0,
+          "type-check/audit failure": 0
+        },
+        "properties": 6,
+        "refutations": [
+          {
+            "property_id": "P4",
+            "property": "The test completes without assertion failure only when the unsplit stream produces exactly five events and leaves 21 outstanding bytes, and both the events and outstanding-byte count remain identical when the stream is split at every individual position from 0 through its full length or at every interior position simultaneously (one byte at a time).",
+            "input": "`expected.0 = []`; `expected.1 = 0`; `stream.len() = 1`; abstract state: events returned by the one-byte-at-a-time run = `[]`; outstanding bytes returned by the one-byte-at-a-time run = `0`; events returned for individual split positions = `[]`; boundaries between event results for individual split positions = `[0, 0, 0]`; outstanding-byte results for individual split positions = `[0, 0]`",
+            "sketch": "If `run(&[])` returns no events, `assert_eq!(expected.0.len(), 5);` fails because the event count is zero rather than five."
+          }
+        ]
+      },
+      "report_history": [
+        {
+          "comment_id": 6357154101,
+          "url": "https://github.com/shuvendu-lahiri/nvx/pull/17#issuecomment-6357154101",
+          "published_at": "2026-10-23T04:09:20Z",
+          "updated_at": "2026-10-23T04:09:20Z",
+          "body_sha256": "254a8bf10365545c039a284fd28db1c32b180378f1096bc37f989ea910762596",
+          "source_sha_prefix": "e83a8e2b93d7",
+          "base_sha_prefix": "12e3b9521456",
+          "run_id": 39896853340,
+          "run_url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39896853340",
+          "counts": {
+            "refuted": 1,
+            "verified": 5,
+            "resources exhausted": 0,
+            "type-check/audit failure": 0
+          },
+          "properties": 6,
+          "refutations": [
+            {
+              "property_id": "P4",
+              "property": "The test completes without assertion failure only when the unsplit stream produces exactly five events and leaves 21 outstanding bytes, and both the events and outstanding-byte count remain identical when the stream is split at every individual position from 0 through its full length or at every interior position simultaneously (one byte at a time).",
+              "input": "`expected.0 = []`; `expected.1 = 0`; `stream.len() = 1`; abstract state: events returned by the one-byte-at-a-time run = `[]`; outstanding bytes returned by the one-byte-at-a-time run = `0`; events returned for individual split positions = `[]`; boundaries between event results for individual split positions = `[0, 0, 0]`; outstanding-byte results for individual split positions = `[0, 0]`",
+              "sketch": "If `run(&[])` returns no events, `assert_eq!(expected.0.len(), 5);` fails because the event count is zero rather than five."
+            }
+          ]
+        }
+      ],
+      "report_matches_current_head": true,
       "attempts": 1,
       "latest_run": {
         "id": 39896853340,
         "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39896853340",
-        "status": "in_progress",
-        "conclusion": null
+        "status": "completed",
+        "conclusion": "success"
       },
       "source_number": 678,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/678",
@@ -882,15 +934,20 @@
       "number": 19,
       "title": "performance: keep results measured before a history reset out of the series",
       "url": "https://github.com/shuvendu-lahiri/nvx/pull/19",
-      "draft": true,
+      "draft": false,
       "state": "open",
       "head_sha": "c395e1c359947a2e1324938d1a390266ae51927d",
       "head_branch": "nfv-pedro-658",
       "latest_report": null,
       "report_history": [],
       "report_matches_current_head": null,
-      "attempts": 0,
-      "latest_run": null,
+      "attempts": 1,
+      "latest_run": {
+        "id": 39898539854,
+        "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39898539854",
+        "status": "in_progress",
+        "conclusion": null
+      },
       "source_number": 658,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/658",
       "source_head_sha": "1b07ded43a33428db2a90947c89582252d5c9327",
@@ -900,15 +957,20 @@
       "number": 20,
       "title": "adversarial: keep executor close bounded when a child holds stdout",
       "url": "https://github.com/shuvendu-lahiri/nvx/pull/20",
-      "draft": true,
+      "draft": false,
       "state": "open",
       "head_sha": "5e46844aaa747e7630be141dd1c478cfbb5a9d4b",
       "head_branch": "nfv-pedro-657",
       "latest_report": null,
       "report_history": [],
       "report_matches_current_head": null,
-      "attempts": 0,
-      "latest_run": null,
+      "attempts": 1,
+      "latest_run": {
+        "id": 39898919181,
+        "url": "https://github.com/shuvendu-lahiri/nvx/actions/runs/39898919181",
+        "status": "queued",
+        "conclusion": null
+      },
       "source_number": 657,
       "source_url": "https://redirect.github.com/microsoft/nvx/pull/657",
       "source_head_sha": "756f215b2587ebecd3cb0b44d861853f98f21d71",
