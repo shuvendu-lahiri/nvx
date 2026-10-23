@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>NVX - NFV Audit Dashboard</title>
+<style>
+:root { color-scheme: light; --ink:#243044; --muted:#596675; --line:#d8d4c9; --red:#a52020; --green:#146343; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); background:linear-gradient(140deg,#f8f3e9,#eff5ef); font:15px/1.5 "Segoe UI",sans-serif; }
+main { max-width:1540px; margin:auto; padding:24px 18px 40px; }
+header { color:#fff; background:linear-gradient(120deg,#23394e,#216253); padding:24px; border-radius:16px; }
+h1 { margin:8px 0; font-size:clamp(24px,3vw,34px); }
+header p { max-width:110ch; color:#e2efeb; }
+header a { color:#d7efff; }
+a { color:#185c95; }
+.panel { margin-top:18px; padding:18px; background:#fffdf8; border:1px solid var(--line); border-radius:12px; box-shadow:0 6px 18px #2430440a; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:12px; margin-top:18px; }
+.stat { background:#fffdf8; padding:16px; border:1px solid var(--line); border-radius:12px; }
+.stat strong { display:block; font-size:28px; }
+.red { color:var(--red); font-weight:700; }
+.green { color:var(--green); font-weight:700; }
+.muted { color:var(--muted); }
+.controls { display:flex; align-items:end; flex-wrap:wrap; gap:14px; }
+label { display:grid; gap:4px; font-weight:600; }
+input,select { padding:9px; font:inherit; border:1px solid #afb7bd; border-radius:6px; background:white; }
+input { width:min(420px,80vw); }
+.scroll { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; min-width:1100px; font-variant-numeric:tabular-nums; }
+th,td { padding:11px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th { position:sticky; top:0; background:#f0ece1; font-size:13px; }
+.number { text-align:right; }
+.has-refutation { background:#fff0eb; border-left:4px solid var(--red); }
+.no-report { background:#f8f7f3; color:var(--muted); }
+.title { min-width:280px; max-width:420px; }
+.badge { display:inline-block; border-radius:5px; padding:2px 7px; background:#fce0d9; color:var(--red); font-weight:700; white-space:nowrap; }
+.date { white-space:nowrap; }
+details { margin-top:10px; max-width:70ch; }
+summary { cursor:pointer; font-weight:600; }
+details p { font-size:13px; overflow-wrap:anywhere; }
+.empty { padding:24px; text-align:center; }
+footer { margin-top:20px; color:var(--muted); font-size:13px; }
+</style>
+</head>
+<body>
+<main>
+<noscript>This interactive dashboard requires JavaScript. Read the <a href="README.md">Markdown dashboard</a> instead.</noscript>
+<header>
+<a href="https://github.com/shuvendu-lahiri/nvx">shuvendu-lahiri/nvx</a>
+<h1>NVX - Neuro-Formal Verification Audit Dashboard</h1>
+<p>Twenty historical source changes by Pedro Henrique Penna. Audited as immutable source text, never executed or merged.</p>
+<p>Published results from the prototype <a href="https://arxiv.org/abs/2608.21516">NFV reviewer</a>.
+Refuted means a <strong>conditional MODEL refutation, not a confirmed source bug</strong>.
+Verification concerns a translated model under its assumptions. Failure to refute is not evidence of correctness.</p>
+</header>
+<section class="stats" aria-label="Snapshot totals">
+<div class="stat"><strong id="attempted"></strong>PRs selected</div>
+<div class="stat"><strong id="published"></strong>Published reports</div>
+<div class="stat"><strong id="refuted" class="red"></strong>Conditional refutations</div>
+<div class="stat"><strong id="verified" class="green"></strong>Model verifications</div>
+<div class="stat"><strong id="missing"></strong>PRs without a report</div>
+</section>
+<section class="panel">
+<div class="controls">
+<label>Search PR or title<input id="query" type="search" placeholder="PR number, title, property..."></label>
+<label>Show<select id="filter"><option value="all">All selected PRs</option><option value="refuted">With conditional refutations</option><option value="published">With published reports</option><option value="missing">Without published reports</option></select></label>
+<label>Order<select id="order"><option value="refuted">Refutations first</option><option value="date">Newest report first</option><option value="number">PR number</option></select></label>
+</div>
+<p id="meta" class="muted"></p>
+<div class="scroll">
+<table aria-describedby="meta">
+<thead><tr><th>Source change</th><th>Replay PR</th><th>Change / refuted properties</th><th>Audit date</th><th>Status</th><th>Properties</th><th>Refuted</th><th>Verified</th><th>Exhausted</th><th>Audit failure</th><th>Evidence</th></tr></thead>
+<tbody id="rows"></tbody>
+</table>
+</div>
+<p id="empty" class="empty" hidden>No PRs match these filters.</p>
+</section>
+<footer>
+<p id="snapshot"></p>
+<p>Counts use each PR's latest published report. Missing reports are not zero-finding analyses.
+Older-head reports are labeled. Links lead to the original assumptions, source overlays and native evidence.
+This dashboard does not rerun proofs or adjudicate refutations. Comment hashes provide snapshot provenance, not authentication.</p>
+<p><a href="README.md">GitHub-readable dashboard</a> &middot; <a href="data.json">Snapshot and report history</a> &middot;
+Layout reference: <a href="https://github.com/Z3Prover/coz3/blob/main/nfv_dashboard.html">CoZ3 NFV dashboard</a>.
+No external assets, network requests or dependencies are required to view this file.</p>
+</footer>
+</main>
+<script type="application/json" id="data">__NFV_DATA__</script>
+<script>
+"use strict";
+const data = JSON.parse(document.getElementById("data").textContent);
+const byId = id => document.getElementById(id);
+const text = (tag, value, className) => {
+  const element = document.createElement(tag);
+  element.textContent = value;
+  if (className) element.className = className;
+  return element;
+};
+const link = (label, url) => {
+  const element = text("a", label);
+  element.href = url;
+  element.rel = "noopener noreferrer";
+  return element;
+};
+const nRefuted = entry => entry.latest_report ? entry.latest_report.counts.refuted : 0;
+byId("attempted").textContent = data.summary.selected_prs;
+byId("published").textContent = data.summary.published_reports;
+byId("refuted").textContent = data.summary.outcomes.refuted;
+byId("verified").textContent = data.summary.outcomes.verified;
+byId("missing").textContent = data.summary.without_report;
+byId("snapshot").textContent = `Snapshot: ${data.generated_at}. ${data.summary.properties} properties in published reports; ${data.summary.refuted_prs} PRs with conditional refutations.`;
+function render() {
+  const query = byId("query").value.toLowerCase();
+  const filter = byId("filter").value;
+  const order = byId("order").value;
+  const entries = data.prs.filter(entry => {
+    const report = entry.latest_report;
+    const searchable = `${entry.number} ${entry.source_number || ""} ${entry.title} ${report ? report.refutations.map(f => f.property).join(" ") : ""}`.toLowerCase();
+    return searchable.includes(query) &&
+      (filter === "all" || (filter === "refuted" && nRefuted(entry) > 0) ||
+       (filter === "published" && report) || (filter === "missing" && !report));
+  });
+  entries.sort((a, b) => {
+    if (order === "number") return b.number - a.number;
+    if (order === "refuted" && Boolean(nRefuted(a)) !== Boolean(nRefuted(b))) return nRefuted(b) - nRefuted(a);
+    return (b.latest_report?.published_at || "").localeCompare(a.latest_report?.published_at || "") || b.number - a.number;
+  });
+  byId("rows").replaceChildren();
+  for (const entry of entries) {
+    const report = entry.latest_report;
+    const row = document.createElement("tr");
+    row.className = nRefuted(entry) ? "has-refutation" : report ? "" : "no-report";
+    const pr = document.createElement("td");
+    pr.append(link(`#${entry.number}`, entry.url));
+    const source = document.createElement("td");
+    if (entry.source_number) source.append(link(`change ${entry.source_number}`, entry.source_url));
+    else source.textContent = "-";
+    const title = text("td", entry.title, "title");
+    if (nRefuted(entry)) {
+      const details = document.createElement("details");
+      details.append(text("summary", `${nRefuted(entry)} conditional model refutation(s)`));
+      for (const finding of report.refutations) {
+        details.append(text("p", `${finding.property_id}: ${finding.property}`));
+        if (finding.input) details.append(text("p", `Input on which it fails: ${finding.input}`));
+        if (finding.sketch) details.append(text("p", `Sketch of the failure: ${finding.sketch}`));
+      }
+      title.append(details);
+    }
+    const status = document.createElement("td");
+    if (report) {
+      status.append(text("span", nRefuted(entry) ? "REFUTED (model)" : "Published", nRefuted(entry) ? "badge" : ""));
+      if (!entry.report_matches_current_head) status.append(text("div", "Older PR head", "muted"));
+      if (entry.latest_run && (entry.latest_run.id !== report.run_id || entry.latest_run.conclusion !== "success")) {
+        status.append(text("div", `Latest attempt: ${entry.latest_run.conclusion || entry.latest_run.status}`, "muted"));
+      }
+    } else {
+      status.append(text("span", "No published report"));
+      if (entry.latest_run) status.append(text("div", entry.latest_run.conclusion || entry.latest_run.status));
+      else status.append(text("div", "Not started (awaiting pilot / worker slot)"));
+    }
+    row.append(source, pr, title, text("td", report ? report.published_at.slice(0, 10) : "-", "date"), status);
+    for (const value of report ? [report.properties, report.counts.refuted, report.counts.verified,
+      report.counts["resources exhausted"], report.counts["type-check/audit failure"]] : ["-", "-", "-", "-", "-"]) {
+      row.append(text("td", value, "number"));
+    }
+    const evidence = document.createElement("td");
+    if (report) {
+      evidence.append(link("Report", report.url), document.createElement("br"), link("Workflow", report.run_url));
+      evidence.append(text("div", report.source_sha_prefix, "muted"));
+      if (entry.latest_run && entry.latest_run.id !== report.run_id) {
+        evidence.append(link("Latest attempt", entry.latest_run.url));
+      }
+      if (entry.report_history.length > 1) {
+        const history = document.createElement("details");
+        history.append(text("summary", `${entry.report_history.length} reports`));
+        for (const item of entry.report_history) {
+          const paragraph = document.createElement("p");
+          paragraph.append(link(item.published_at.slice(0, 10), item.url));
+          history.append(paragraph);
+        }
+        evidence.append(history);
+      }
+    } else if (entry.latest_run) evidence.append(link("Workflow", entry.latest_run.url));
+    row.append(evidence);
+    byId("rows").append(row);
+  }
+  byId("meta").textContent = `Showing ${entries.length} of ${data.prs.length} selected PRs. ${data.summary.attempted_prs} audits started; ${data.summary.waiting_prs} waiting. Refutations are highlighted, not confirmed bugs.`;
+  byId("empty").hidden = entries.length !== 0;
+}
+for (const id of ["query", "filter", "order"]) byId(id).addEventListener("input", render);
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+{
+  "repository": "shuvendu-lahiri/nvx",
+  "source_repository": "microsoft/nvx",
+  "author": "ppenna",
+  "selection_policy": "Twenty most recently merged supported-source PRs by the selected author, excluding GitHub/workflow changes; exact full diffs retained",
+  "prs": [
+    {
+      "number": 2,
+      "source_number": 758,
+      "source_title": "nvx-rs: build the guest programs' test command lines with one helper",
+      "source_head_sha": "52e385bb6a93d27ccce7524c4837d74e70b3710b",
+      "source_base_sha": "2817f4eb79911ef8380dc2b580b9d5c77e6b5b21",
+      "source_merged_at": "2026-10-22T20:23:27Z",
+      "replay_head_sha": "6f0a3614664c2ce1156e8c74c3c156567fce5d51",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/758"
+    },
+    {
+      "number": 3,
+      "source_number": 755,
+      "source_title": "nvx-rs: share the sandbox tests' policy and native helpers",
+      "source_head_sha": "37e2d27f9dff5d8ce4b97ab0606379a554e57cae",
+      "source_base_sha": "2817f4eb79911ef8380dc2b580b9d5c77e6b5b21",
+      "source_merged_at": "2026-10-22T19:59:34Z",
+      "replay_head_sha": "09cbaae595e8cce752086618d45501d2e59a0ffd",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/755"
+    },
+    {
+      "number": 4,
+      "source_number": 750,
+      "source_title": "nvx-rs: share the guest tests' /bin/sh -c command helper",
+      "source_head_sha": "d68ab667e4d2c55e59d730ad6f119a8b31446cc1",
+      "source_base_sha": "2817f4eb79911ef8380dc2b580b9d5c77e6b5b21",
+      "source_merged_at": "2026-10-22T13:38:21Z",
+      "replay_head_sha": "256b3e4f698aff1d363561b092535092ca6b53bb",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/750"
+    },
+    {
+      "number": 1,
+      "source_number": 747,
+      "source_title": "nvx-rs: encode the NVXS roles' DATA and CREDIT with one function",
+      "source_head_sha": "8beb6e266b89b68f51b0b8f079745800b26d4855",
+      "source_base_sha": "2817f4eb79911ef8380dc2b580b9d5c77e6b5b21",
+      "source_merged_at": "2026-10-22T10:43:26Z",
+      "replay_head_sha": "487c340542147e201d9870ad8f499c4874e80c63",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/747"
+    },
+    {
+      "number": 5,
+      "source_number": 742,
+      "source_title": "nvx-rs: read the time checks' kernel files with one function",
+      "source_head_sha": "185ed3354464eca00437ca99da74ed4ea884355a",
+      "source_base_sha": "83cafb8eabcf4fe32b1d11e6249e58b5b474f232",
+      "source_merged_at": "2026-10-22T10:16:06Z",
+      "replay_head_sha": "1f88dd5b30b961cc6376bc39aaed32253e4e3e30",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/742"
+    },
+    {
+      "number": 6,
+      "source_number": 705,
+      "source_title": "nvx-rs: write the NVXS record header with one function",
+      "source_head_sha": "3e75801e02acfdb8e1d61702794306924cd26684",
+      "source_base_sha": "8b585d722d4ade4146291ed7d4e123889d8bbbd2",
+      "source_merged_at": "2026-10-22T03:17:30Z",
+      "replay_head_sha": "c1c4052e74242ec090efeafeb6ccc30147628547",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/705"
+    },
+    {
+      "number": 7,
+      "source_number": 689,
+      "source_title": "nvx-rs: lay out execution-helper configurations with one function",
+      "source_head_sha": "dcbb38c247b3c0c5c5744103a42e78703989a51f",
+      "source_base_sha": "fbefbfccdc341bdebc9f0aa0e742fe351846c114",
+      "source_merged_at": "2026-10-22T03:16:43Z",
+      "replay_head_sha": "63221745fa27d1e52d3d7fb8bd865534ee1c0a0f",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/689"
+    },
+    {
+      "number": 8,
+      "source_number": 685,
+      "source_title": "nvx-rs: parse the mount mode, owner, and kind names with one function",
+      "source_head_sha": "f5686796880df2c1bc2ed29bee7a50778c19ba77",
+      "source_base_sha": "66159235cd673a401c308a04d1233e0110474a68",
+      "source_merged_at": "2026-10-21T22:48:02Z",
+      "replay_head_sha": "22cee6ac8408399c656adb165d1bc2fc9a86e7d7",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/685"
+    },
+    {
+      "number": 9,
+      "source_number": 684,
+      "source_title": "nvx-rs: send the guest's attachment, ACK, and CREDIT with one method",
+      "source_head_sha": "dbf5fb7eb363bc1cffae8a49f885b1da5042693f",
+      "source_base_sha": "916a61f0297900db13d7d9d04d170f01ef9ed71f",
+      "source_merged_at": "2026-10-21T21:51:11Z",
+      "replay_head_sha": "551a6706e8131419da428634b76cc9e5525c3845",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/684"
+    },
+    {
+      "number": 10,
+      "source_number": 683,
+      "source_title": "nvx-rs: check the golden tests' fixture sections with one function",
+      "source_head_sha": "6fbfacf50ded6308e530b59fdf37455664aeb3eb",
+      "source_base_sha": "916a61f0297900db13d7d9d04d170f01ef9ed71f",
+      "source_merged_at": "2026-10-21T21:48:13Z",
+      "replay_head_sha": "62db246008f6006669ffe20b93caffdb31dbd085",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/683"
+    },
+    {
+      "number": 11,
+      "source_number": 682,
+      "source_title": "nvx-rs: parse legacy egress rules with the MXC form's helpers",
+      "source_head_sha": "3a9c190461e1cb829480d39e09db1d25ad129cb6",
+      "source_base_sha": "916a61f0297900db13d7d9d04d170f01ef9ed71f",
+      "source_merged_at": "2026-10-21T19:43:51Z",
+      "replay_head_sha": "389e4d6788082efa9c96a1838bac2196c3a3255c",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/682"
+    },
+    {
+      "number": 12,
+      "source_number": 714,
+      "source_title": "ci: link the Windows OpenVMM test builds with /Brepro for sccache",
+      "source_head_sha": "490dfd595f1dfddab90ca617555fc6a2bf290c45",
+      "source_base_sha": "96332e8269655b8bc8107dd82ae8755ed6c219bc",
+      "source_merged_at": "2026-10-21T18:45:27Z",
+      "replay_head_sha": "dd02cd576fdd5cf813b0b64f7ac93cd1db417b86",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/714"
+    },
+    {
+      "number": 13,
+      "source_number": 681,
+      "source_title": "nvx-rs: report the time probe's invalid options with one method",
+      "source_head_sha": "ce447e1ca1cef7917cb2a65e1982fb61cfb6ed60",
+      "source_base_sha": "916a61f0297900db13d7d9d04d170f01ef9ed71f",
+      "source_merged_at": "2026-10-21T16:55:49Z",
+      "replay_head_sha": "b7ee8752a2147beb18ba4f21335d749a383b173e",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/681"
+    },
+    {
+      "number": 14,
+      "source_number": 680,
+      "source_title": "nvx-rs: check the CLI session's replies through shared methods",
+      "source_head_sha": "8dbc2715830b2e5ea111c1bc41f4b70b449f849b",
+      "source_base_sha": "916a61f0297900db13d7d9d04d170f01ef9ed71f",
+      "source_merged_at": "2026-10-21T15:39:31Z",
+      "replay_head_sha": "9261ed1f31426f75123f35c68fada188fb047c67",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/680"
+    },
+    {
+      "number": 15,
+      "source_number": 679,
+      "source_title": "nvx-rs: run the guest programs' main through one shared function",
+      "source_head_sha": "56ab021afe1c15ec7effd07b00c7bbcc0e0efd29",
+      "source_base_sha": "916a61f0297900db13d7d9d04d170f01ef9ed71f",
+      "source_merged_at": "2026-10-21T14:54:46Z",
+      "replay_head_sha": "660b8c627e9df5a7ab7d5abc97e393947806c07e",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/679"
+    },
+    {
+      "number": 16,
+      "source_number": 659,
+      "source_title": "microvm tests: stream OpenVMM transcripts to disk as they are read",
+      "source_head_sha": "6a4743a74e2efac8604dea864d6e9e5e68978f83",
+      "source_base_sha": "3a42d2e56d646580422b14d7c4357126a4751505",
+      "source_merged_at": "2026-10-21T12:31:19Z",
+      "replay_head_sha": "1576d97c5c0c7b73a7fee98e6bfe19e6317adeed",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/659"
+    },
+    {
+      "number": 17,
+      "source_number": 678,
+      "source_title": "nvx-rs: build the NVXS unit tests' epoch identities with one function",
+      "source_head_sha": "897315d2d5dfd55f62c01b0c76af1e54ee3782df",
+      "source_base_sha": "916a61f0297900db13d7d9d04d170f01ef9ed71f",
+      "source_merged_at": "2026-10-21T11:30:41Z",
+      "replay_head_sha": "e83a8e2b93d7fc34595df63ade0f4ba9fc721eb8",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/678"
+    },
+    {
+      "number": 18,
+      "source_number": 664,
+      "source_title": "release: name the mismatched fields in Ubuntu artifact manifest errors",
+      "source_head_sha": "b2a8d7665bc27e4ffb095338b286701f3cad0dda",
+      "source_base_sha": "96bedf2c2ab68fee4683d4aeb16ece6e361e703e",
+      "source_merged_at": "2026-10-21T11:01:55Z",
+      "replay_head_sha": "580bf5db9da57f8096c924ce8aa2bb49f9036b9f",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/664"
+    },
+    {
+      "number": 19,
+      "source_number": 658,
+      "source_title": "performance: keep results measured before a history reset out of the series",
+      "source_head_sha": "1b07ded43a33428db2a90947c89582252d5c9327",
+      "source_base_sha": "3a42d2e56d646580422b14d7c4357126a4751505",
+      "source_merged_at": "2026-10-21T10:37:09Z",
+      "replay_head_sha": "c395e1c359947a2e1324938d1a390266ae51927d",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/658"
+    },
+    {
+      "number": 20,
+      "source_number": 657,
+      "source_title": "adversarial: keep executor close bounded when a child holds stdout",
+      "source_head_sha": "756f215b2587ebecd3cb0b44d861853f98f21d71",
+      "source_base_sha": "3a42d2e56d646580422b14d7c4357126a4751505",
+      "source_merged_at": "2026-10-20T22:10:48Z",
+      "replay_head_sha": "5e46844aaa747e7630be141dd1c478cfbb5a9d4b",
+      "source_url": "https://redirect.github.com/microsoft/nvx/pull/657"
+    }
+  ]
+}
