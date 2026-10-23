@@ -41,6 +41,13 @@ def run(number=2, run_id=100, conclusion="success"):
 
 
 class RefreshTests(unittest.TestCase):
+    def test_hosted_pages_redirect_without_redirecting_local_snapshots(self):
+        data = refresh.build([pr()], [comment()], [run()], "snapshot")
+        rendered = refresh.render_html(data)
+        self.assertIn('location.replace("https://shuvendu-lahiri.github.io/nfv_dashboard/nvx/")', rendered)
+        self.assertIn('location.protocol === "https:" || location.protocol === "http:"', rendered)
+        self.assertIn("https://shuvendu-lahiri.github.io/nfv_dashboard/nvx/", refresh.render_markdown(data))
+
     def test_reruns_are_attempts_not_extra_prs_or_properties(self):
         rerun = {**run(), "run_attempt": 2}
         data = refresh.build([pr()], [comment()], [rerun], "snapshot")

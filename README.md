@@ -1,6 +1,6 @@
 # NVX NFV audit reports
 
-[Open the live dashboard](https://shuvendu-lahiri.github.io/nvx/nfv_reports/) or
+[Open the live dashboard](https://shuvendu-lahiri.github.io/nfv_dashboard/nvx/) or
 read the [GitHub-readable dashboard](nfv_reports/README.md).
 
 This reports-only branch tracks twenty historical source changes by Pedro
@@ -14,3 +14,6 @@ evidence. Waiting, in-progress and failed audits are not zero-finding results.
 
 The dashboard implementation is adapted from the LiteBox NFV dashboard, with
 the visual layout inspired by CoZ3.
+
+The previous hosted URLs redirect to the shared hub. Local HTML copies retain
+their archived interactive snapshot.

@@ -5,7 +5,7 @@ Twenty historical source changes by Pedro Henrique Penna, replayed in this fork 
 Published results from the prototype [Neuro-Formal Verification](https://arxiv.org/abs/2608.21516) reviewer.
 **Refutations are conditional MODEL refutations, not confirmed source bugs. Verification concerns translated models under stated assumptions; failure to refute is not evidence of correctness.**
 
-**[Interactive dashboard](index.html)** (open the downloaded file in a browser; no server or external dependencies).
+**[Live interactive dashboard](https://shuvendu-lahiri.github.io/nfv_dashboard/nvx/)** or [download the standalone HTML](index.html) (no server or external dependencies).
 
 Snapshot: 2026-10-23T05:28:24.771632+00:00. Latest published report per PR supplies the counts; all report links are retained in [data.json](data.json). Workflow attempts without a published report are not counted as zero findings.
 
