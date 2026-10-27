@@ -9,16 +9,17 @@
 - Mapped fork tip: `a0556d7d85ce1fff89f5b45a98f15c5c79cbb6fb`, position 157. The graph, PR
   summary, and commit mapping below cover positions 001-157 and the fixups at positions
   334-340, 344, and 345.
-- NVX's pinned OpenVMM revision: `e68871cc6f14fceb6d38a899504ae8105f89e310`, position 345.
-  Positions 344 and 345, which microsoft/openvmm#4762 proposes for `feature/microvm/dev`, are
-  two commits on position 343, `a12d9167f`, the head of `feature/microvm/dev` since
-  microsoft/openvmm#4749 merged positions 341-343. Those are three commits on position 340,
-  `2b681564d`, which microsoft/openvmm#4735 merged with position 339. Positions 339 and 340 are
-  two commits on position 338, `8a0d945ed`, which microsoft/openvmm#4734 merged, and position
-  338 is one commit on `79a501b63`, the head of the `feature/microvm/release/v2.3` branch of
-  microsoft/openvmm. The pin is 188 commits past the mapped tip on the same first-parent chain.
-  Positions 158-333 and 341-343 are not yet assigned to PRs; see
-  [Commits after the mapped tip](#commits-after-the-mapped-tip).
+- NVX's pinned OpenVMM revision: `b61b4b363cd4f0726982afb3613302841813cd5d`, position 347.
+  Positions 346 and 347, which microsoft/openvmm#4769 proposes for `feature/microvm/dev`, are
+  two commits on position 345, `e68871cc6`, the head of `feature/microvm/dev` since
+  microsoft/openvmm#4762 merged positions 344 and 345. Those are two commits on position 343,
+  `a12d9167f`, which microsoft/openvmm#4749 merged with positions 341 and 342. Positions
+  341-343 are three commits on position 340, `2b681564d`, which microsoft/openvmm#4735 merged
+  with position 339. Positions 339 and 340 are two commits on position 338, `8a0d945ed`, which
+  microsoft/openvmm#4734 merged, and position 338 is one commit on `79a501b63`, the head of the
+  `feature/microvm/release/v2.3` branch of microsoft/openvmm. The pin is 190 commits past the
+  mapped tip on the same first-parent chain. Positions 158-333, 341-343, 346, and 347 are not
+  yet assigned to PRs; see [Commits after the mapped tip](#commits-after-the-mapped-tip).
 - Upstream main: `22c0485be597f87a76771e1db03eaa823a685ffc` (2026-10-22), the fork base.
 
 ## Upstream status
@@ -308,7 +309,8 @@ The physical branch is one first-parent chain:
   -> PR14 fixup [336] -> PR09 fixup [337]
   -> PR02 fixup [338] -> PR20 fixup [339] -> PR23 fixup [340]
   -> unassigned [341-343] -> PR18 fixups [344-345]
-  -> e68871cc6 (NVX pin)
+  -> unassigned [346-347]
+  -> b61b4b363 (NVX pin)
 ```
 
 For upstream review, PR01-PR08 and PR14 can be rebased independently onto current upstream main,
@@ -330,10 +332,11 @@ PR18's position 111.
 
 ## Commits after the mapped tip
 
-The NVX pin extends the chain past position 157 without merges. Of the 188 later commits,
-positions 158-333 and 341-343 are not yet classified or assigned to PRs, positions 334-337 are
-the fixups of the `feature/microvm/release/v2.3` rebase, position 338 is a PR02 fixup,
-positions 339 and 340 are PR20 and PR23 fixups, and positions 344 and 345 are PR18 fixups.
+The NVX pin extends the chain past position 157 without merges. Of the 190 later commits,
+positions 158-333, 341-343, 346, and 347 are not yet classified or assigned to PRs, positions
+334-337 are the fixups of the `feature/microvm/release/v2.3` rebase, position 338 is a PR02
+fixup, positions 339 and 340 are PR20 and PR23 fixups, and positions 344 and 345 are PR18
+fixups.
 This table groups them by topic in chain order; ranges are inclusive, as in the
 [PR summary](#pr-summary).
 
@@ -376,6 +379,7 @@ This table groups them by topic in chain order; ranges are inclusive, as in the
 | 341 | `c7ac476b4` | 1 | `disk_zerofill` presents a fixed geometry over a shorter backing disk, or none: reads past the backing disk's end return zeros, and every write fails without reaching it |
 | 342-343 | `857ff9645..a12d9167f` | 2 | A platform restore presents the snapshot's `distro` capacity over a shorter image and, with `--restore-absent-scratch`, attaches its fresh scratch without a file, reading zeros and failing writes |
 | 344-345 | `a04cc8a00..e68871cc6` | 2 | A microVM virtio-fs queue worker waits for request admission to reopen instead of ending, so the queues that a gated restore, or the rollback of a failed save, starts behind the input gate serve the guest once input resumes (microsoft/openvmm#4762); fold into 111 |
+| 346-347 | `8bd425136..b61b4b363` | 2 | A second revision of the Genoa CPU profile, `amd.genoa.v2`, which `auto` selects: `amd.genoa.v1` without what the Microsoft hypervisor does not present on Azure's Genoa VMs, `LFENCE` serialization, NoSmmCtlMsr, and the TSA immunities in `0x80000021` and the basic leaves above `0xd`, and the nested-WHP Genoa host of microsoft/nvx#928 as a test fixture (microsoft/openvmm#4769); revises position 282's Genoa profile |
 
 Some of these commits change mapped work rather than add to it. Positions 246-250 remove the
 legacy microVM clock paths and change files that PR10 and PR17 also change. Position 252 makes
